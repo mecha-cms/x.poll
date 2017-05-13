@@ -15,7 +15,7 @@ foreach ($a as $k => $v) {
 }
 
 ?>
-<div class="poll poll-<?php echo $id; ?> p" data-token="<?php echo $token; ?>" data-url="<?php echo $url . '/' . Extend::state('poll', 'path', '-poll') . '/' . $path; ?>">
+<div class="poll poll-<?php echo $id; ?> p" data-token="<?php echo $token; ?>" data-url="<?php echo $url . '/' . Extend::state('poll', 'path', '-poll') . '/' . $path; ?>" id="poll:<?php echo $id; ?>">
   <?php if (isset($lot['q'])): ?>
   <h4 class="poll--q"><?php echo $lot['q']; ?></h4>
   <?php endif; ?>

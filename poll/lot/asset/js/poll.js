@@ -46,7 +46,7 @@
             u[cla] = d + ' a done';
             v[reset]('title');
         }
-        ajax(b[_].url, 'token=' + encode(b[_].token) + '&key=' + encode(v[get]('data-key')) + '&value=' + encode(w));
+        ajax(b[_].url, 'id=' + encode((b.id || ':').split(':')[1]) + '&token=' + encode(b[_].token) + '&key=' + encode(v[get]('data-key')) + '&value=' + encode(w) + '&title=' + encode(f));
     }
 
     for (i = 0, j = poll[count]; i < j; ++i) {

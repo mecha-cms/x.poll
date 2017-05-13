@@ -10,25 +10,28 @@ Route::set($state['path'] . '/%*%', function($path = "") use($state) {
     }
     $f = LOT . DS . $path . DS . 'poll.data';
     $data = e(File::open($f)->read([]));
-    if ($s = Request::post('key', '0', false)) {
+    if ($k = Request::post('key', '0', false)) {
         $v = Request::post('value', 0);
-        if (!isset($data[$s])) {
-            $data[$s] = $v ?: 1;
+        if (!isset($data[$k])) {
+            $data[$k] = $v ?: 1;
         } else {
-            $data[$s] = $data[$s] + $v;
+            $data[$k] = $data[$k] + $v;
         }
-        if ($data[$s] < 1) unset($data[$s]);
-        $id = 'poll.' . md5($s . ':' . $path);
+        if ($data[$k] < 1) unset($data[$k]);
+        $id = 'poll.' . md5($k . ':' . $path);
         if ($v === -1) {
             Cookie::reset($id);
         } else {
             Cookie::set($id, 1, $state['cookie']);
         }
-    }
-    if (!empty($data)) {
-        File::write(To::json($data))->saveTo($f, 0600);
-    } else {
-        File::open($f)->delete();
+        Hook::fire('on.poll.' . (empty($data) ? 'reset' : 'set'), [$k, $v, $data, $path, Request::post()]);
+        if (!Message::$x) {
+            if (!empty($data)) {
+                File::write(To::json($data))->saveTo($f, 0600);
+            } else {
+                File::open($f)->delete();
+            }
+        }
     }
     exit;
 });
