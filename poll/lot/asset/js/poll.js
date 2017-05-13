@@ -24,29 +24,28 @@
         poll = doc[query]('.poll'),
         encode = encodeURIComponent,
         _ = 'poll',
-        a, b, c, d, e, f, i, j, k, l, t, u, v, w;
+        a, b, c, d, e, i, j, k, l, t, u, v, w;
 
     function click() {
         t = this;
         u = t[parent];
         v = u[parent];
         e = u[child][1];
-        if (!f) {
-            f = v.title;
-        }
         b = v[parent][parent];
         if (u[cla] === d + ' a done') {
             w = -1;
             e[html] = (+e[html]) + w;
             u[cla] = d + ' a';
-            v[set]('title', f);
+            v[set]('title', v[get]('data-title') || "");
+            v[reset]('data-title');
         } else {
             w = 1;
             e[html] = (+e[html]) + w;
             u[cla] = d + ' a done';
+            v[set]('data-title', v[get]('title') || "");
             v[reset]('title');
         }
-        ajax(b[_].url, 'id=' + encode((b.id || ':').split(':')[1]) + '&token=' + encode(b[_].token) + '&key=' + encode(v[get]('data-key')) + '&value=' + encode(w) + '&title=' + encode(f));
+        ajax(b[_].url, 'id=' + encode((b.id || ':').split(':')[1]) + '&token=' + encode(b[_].token) + '&key=' + encode(v[get]('data-key')) + '&value=' + encode(w) + '&title=' + encode(v[get]('title') || v[get]('data-title')));
     }
 
     for (i = 0, j = poll[count]; i < j; ++i) {

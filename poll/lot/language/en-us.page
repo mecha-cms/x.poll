@@ -5,5 +5,5 @@ type: YAML
 poll:
   like: {"+1":"Like this!","-1":"Dislike this!"}
   love: {"+1":"Love this!","-1":"Hate this!"}
-  reaction: {"+1":"Like","-1":"Dislike","+2":"Happy","+3":"Funny","+4":"Peace","+5":"Shock","+6":"Sad","-2":"Confused","-3":"Bored","-4":"Angry"}
+  react: {"+1":"Like","-1":"Dislike","+2":"Happy","+3":"Funny","+4":"Peace","+5":"Shock","+6":"Sad","-2":"Confused","-3":"Bored","-4":"Angry"}
   vote: {"+1":"Vote up!","-1":"Vote down!"}
