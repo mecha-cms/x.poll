@@ -37,7 +37,7 @@ Shield::get('poll/react');
 #### Response
 
 ~~~ .php
-Shield::get('poll/response', [
+Shield::get('poll/respond', [
     'q' => 'Was this article helpful?',
     'a' => ['Yes', 'No']
 ]);
@@ -52,7 +52,7 @@ Shield::get('poll/vote');
 #### Custom
 
 ~~~ .php
-Shield::get('poll/response', [
+Shield::get('poll/respond', [
     'q' => 'Is throwing your hair in the garbage safe?',
     'h' => 'I wanted to be sure because in biology we learned that it had DNA and stuff so is it safe?',
     'a' => [
