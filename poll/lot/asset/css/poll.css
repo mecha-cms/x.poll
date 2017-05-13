@@ -59,47 +59,47 @@
 }
 .poll-love .a.done button {color:#c00}
 
-/* @reaction */
-.poll-reaction span {
+/* @react */
+.poll-react span {
   background:#fffade;
   color:#222;
   line-height:1.5em;
 }
-.poll-reaction span + span {margin-left:1em}
-.poll-reaction span button,
-.poll-reaction span i {
+.poll-react span + span {margin-left:1em}
+.poll-react span button,
+.poll-react span i {
   display:block;
   text-align:center;
   margin:0;
 }
-.poll-reaction span button {
+.poll-react span button {
   font-size:150%;
   color:#d14322;
 }
-.poll-reaction span button,
-.poll-reaction .a button {
+.poll-react span button,
+.poll-react .a button {
   background:#fef09e;
   width:2em;
   height:2em;
   line-height:2em;
   color:#555;
 }
-.poll-reaction .poll\:\+1 button {background:#fcf795}
-.poll-reaction .poll\:\-1 button {background:#f5f0b9}
-.poll-reaction .poll\:\+2 button {background:#e5ff9d}
-.poll-reaction .poll\:\+3 button {background:#ffde9d}
-.poll-reaction .poll\:\+4 button {background:#bfedfa}
-.poll-reaction .poll\:\+5 button {background:#e8c1f0}
-.poll-reaction .poll\:\+6 button {background:#b4a5ce}
-.poll-reaction .poll\:\-2 button {background:#A7BCCE}
-.poll-reaction .poll\:\-3 button {background:#d8d8d8}
-.poll-reaction .poll\:\-4 button {background:#ffadaf}
-.poll-reaction .a.done button {
+.poll-react .poll\:\+1 button {background:#fcf795}
+.poll-react .poll\:\-1 button {background:#f5f0b9}
+.poll-react .poll\:\+2 button {background:#e5ff9d}
+.poll-react .poll\:\+3 button {background:#ffde9d}
+.poll-react .poll\:\+4 button {background:#bfedfa}
+.poll-react .poll\:\+5 button {background:#e8c1f0}
+.poll-react .poll\:\+6 button {background:#b4a5ce}
+.poll-react .poll\:\-2 button {background:#A7BCCE}
+.poll-react .poll\:\-3 button {background:#d8d8d8}
+.poll-react .poll\:\-4 button {background:#ffadaf}
+.poll-react .a.done button {
   background:#fff;
   color:#555;
 }
 
-/* @response */
-.poll-response span button {font-weight:bold}
-.poll-response span i:before {content:'('}
-.poll-response span i:after {content:')'}
+/* @respond */
+.poll-respond span button {font-weight:bold}
+.poll-respond span i:before {content:'('}
+.poll-respond span i:after {content:')'}
