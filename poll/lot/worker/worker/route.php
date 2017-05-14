@@ -5,8 +5,7 @@ Route::set($state['path'] . '/%*%', function($path = "") use($state) {
     HTTP::status(200);
     $token = Request::post('token');
     if (!$token || $token !== Session::get(Guardian::$config['session']['token'])) {
-        HTTP::status(404);
-        exit;
+        Guardian::kick("");
     }
     $f = LOT . DS . $path . DS . 'poll.data';
     $data = e(File::open($f)->read([]));
