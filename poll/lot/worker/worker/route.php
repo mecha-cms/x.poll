@@ -24,7 +24,7 @@ Route::set($state['path'] . '/%*%', function($path = "") use($state) {
         } else {
             Cookie::set($id, 1, $state['cookie']);
         }
-        Hook::fire('on.poll.' . (empty($data) ? 'reset' : 'set'), [$k, $v, $data, $path, Request::post()]);
+        Hook::fire('on.poll.' . ($v === -1 ? 'reset' : 'set'), [$k, $v, $data, $path, Request::post()]);
         if (!Message::$x) {
             if (!empty($data)) {
                 File::write(To::json($data))->saveTo($f, 0600);
