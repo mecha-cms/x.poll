@@ -18,6 +18,7 @@
   vertical-align:middle;
   width:1em;
   height:1em;
+  fill:currentColor;
 }
 .poll button {
   margin:0 .25em 0 0;
@@ -77,29 +78,30 @@
   color:#d14322;
 }
 .poll-react span button,
-.poll-react .a button {
+.poll-react .a button,
+.poll-react .a.done button {
   background:#fef09e;
   width:2em;
   height:2em;
   line-height:2em;
   color:#555;
 }
-.poll-react .poll\:\+1 button {background:#fcf795}
-.poll-react .poll\:\-1 button {background:#f5f0b9}
-.poll-react .poll\:\+2 button {background:#e5ff9d}
-.poll-react .poll\:\+3 button {background:#ffde9d}
-.poll-react .poll\:\+4 button {background:#bfedfa}
-.poll-react .poll\:\+5 button {background:#e8c1f0}
-.poll-react .poll\:\+6 button {background:#b4a5ce}
-.poll-react .poll\:\-2 button {background:#A7BCCE}
-.poll-react .poll\:\-3 button {background:#d8d8d8}
-.poll-react .poll\:\-4 button {background:#ffadaf}
-.poll-react .a.done button {
+.poll-react .poll\:\+1 .a button {background:#fcf795}
+.poll-react .poll\:\-1 .a button {background:#f5f0b9}
+.poll-react .poll\:\+2 .a button {background:#e5ff9d}
+.poll-react .poll\:\+3 .a button {background:#ffde9d}
+.poll-react .poll\:\+4 .a button {background:#bfedfa}
+.poll-react .poll\:\+5 .a button {background:#e8c1f0}
+.poll-react .poll\:\+6 .a button {background:#b4a5ce}
+.poll-react .poll\:\-2 .a button {background:#a7bcce}
+.poll-react .poll\:\-3 .a button {background:#d8d8d8}
+.poll-react .poll\:\-4 .a button {background:#ffadaf}
+.poll-react .a.done .a button {
   background:#fff;
   color:#555;
 }
 
 /* @respond */
-.poll-respond span button {font-weight:bold}
+.poll-respond .a button {font-weight:bold}
 .poll-respond span i:before {content:'('}
 .poll-respond span i:after {content:')'}
