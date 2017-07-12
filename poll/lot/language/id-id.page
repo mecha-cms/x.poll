@@ -1,0 +1,9 @@
+---
+type: YAML
+...
+
+poll:
+  like: {"+1":"Suka!","-1":"Tidak suka!"}
+  love: {"+1":"Suka!","-1":"Benci!"}
+  react: {"+1":"Suka","-1":"Tidak Suka","+2":"Senang","+3":"Lucu","+4":"Damai","+5":"Syok","+6":"Sedih","-2":"Bingung","-3":"Bosan","-4":"Marah"}
+  vote: {"+1":"Setuju!","-1":"Tidak setuju!"}
