@@ -4,6 +4,7 @@ description: Polls is a unified extension used to handle all tasks related to do
 author: Taufik Nurrohman
 type: Markdown
 version: 1.0.5
+dependency: {"extension":["page"]}
 ...
 
 ### Usage
