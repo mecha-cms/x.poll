@@ -7,8 +7,8 @@ Route::set($state['path'] . '/%*%', function($path = "") use($state) {
     if (!$token || !Guardian::check($token)) {
         Guardian::kick("");
     }
-    $f = LOT . DS . $path . DS . 'poll.data';
-    $data = e(File::open($f)->read([]));
+    $f = LOT . DS . str_replace('/', DS, $path) . DS . 'poll.data';
+    $data = To::anemon(File::open($f)->read([]));
     if ($k = Request::post('key', '0', false)) {
         $v = Request::post('value', 0);
         if (!isset($data[$k])) {
@@ -23,7 +23,7 @@ Route::set($state['path'] . '/%*%', function($path = "") use($state) {
         } else {
             Cookie::set($id, 1, $state['cookie']);
         }
-        Hook::fire('on.poll.' . ($v === -1 ? 'reset' : 'set'), [$k, $v, $data, $path, Request::post()]);
+        Hook::fire('on.poll.' . ($v === -1 ? 'reset' : 'set'), [$f, $f, [$k, $v, $data, $path]]);
         if (!Message::$x) {
             if (!empty($data)) {
                 File::write(To::json($data))->saveTo($f, 0600);
