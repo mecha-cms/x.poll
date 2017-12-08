@@ -22,10 +22,10 @@ foreach ($a as $k => $v) {
   <?php if (isset($lot['h'])): ?>
   <div class="poll--h"><?php echo '<p>' . str_replace(["\n\n", "\n"], ['</p><p>', '<br>'], n(To::text($lot['h'], HTML_WISE_I, true))) . '</p>'; ?></div>
   <?php endif; ?>
-  <p class="poll--a">
+  <p class="poll--a"><!--
     <?php foreach ($a as $k => $v): ?>
     <?php $done = Cookie::get('poll.' . md5($k . ':' . $path)); ?>
-    <span class="poll:<?php echo $k . ($done ? ' freeze' : ""); ?>" data-key="<?php echo $k; ?>"<?php echo (isset($v['title']) ? ' title="' . $v['title'] . '"' : (isset($speak[$id][$k]) ? ' title="' . $speak[$id][$k] . '"' : "")); ?>><span><button><?php echo isset($v['i']) ? $v['i'] : $k; ?></button><i><?php echo isset($data[$k]) ? $data[$k] : 0; ?></i></span></span>
+    --><span class="poll:<?php echo $k . ($done ? ' freeze' : ""); ?>" data-key="<?php echo $k; ?>"<?php echo (isset($v['title']) ? ' title="' . $v['title'] . '"' : (isset($speak[$id][$k]) ? ' title="' . $speak[$id][$k] . '"' : "")); ?>><span><button><?php echo isset($v['i']) ? $v['i'] : $k; ?></button><i><?php echo isset($data[$k]) ? $data[$k] : 0; ?></i></span></span><!--
     <?php endforeach; ?>
-  </p>
+  --></p>
 </div>
