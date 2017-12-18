@@ -3,7 +3,7 @@
 $id = isset($lot['id']) ? $lot['id'] : Path::N(__FILE__);
 
 $path = isset($lot['path']) ? $lot['path'] : 'page/' . $url->path;
-$data = e(File::open(LOT . DS . $path . DS . 'poll.data')->read([]));
+$data = (array) e(File::open(LOT . DS . $path . DS . 'poll.data')->read([]));
 
 $a = isset($lot['a']) ? $lot['a'] : [];
 $speak = a($language->poll);
