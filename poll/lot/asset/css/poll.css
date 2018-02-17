@@ -1,4 +1,8 @@
-.poll {display:block}
+.poll,
+.poll.p {
+  display:block;
+  margin-bottom:-.5em;
+}
 .poll p:after,
 .poll span span:after {
   content:"";
@@ -35,7 +39,9 @@
   border:0;
   outline:0;
 }
-.poll span + span {margin-left:.5em}
+.poll span {margin:0 .5em .5em 0}
+.poll span:last-child {margin-right:0}
+.poll span span {margin:0}
 .poll span i {font:inherit}
 .poll .a button {
   color:#06c;
@@ -61,12 +67,15 @@
 .poll-love .a.done button {color:#c00}
 
 /* @react */
+.poll-react,
+.poll-react.p {margin-bottom:-1em}
 .poll-react span {
   background:#fffade;
   color:#222;
   line-height:1.5em;
+  margin:0 1em 1em 0;
 }
-.poll-react span + span {margin-left:1em}
+.poll-react span:last-child {margin-right:0}
 .poll-react span button,
 .poll-react span i {
   display:block;

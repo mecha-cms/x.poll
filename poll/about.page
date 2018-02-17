@@ -7,7 +7,7 @@ description: >
   brings them all together into a simpler yet more extensible system in a single folder.
 author: Taufik Nurrohman
 type: Markdown
-version: 1.0.8
+version: 1.0.9
 
 dependency:
   extension:
