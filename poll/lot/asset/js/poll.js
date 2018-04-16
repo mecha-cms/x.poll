@@ -23,8 +23,16 @@
         count = 'length',
         poll = doc[query]('.poll'),
         encode = encodeURIComponent,
-        _ = 'poll',
+        script = doc.getElementsByTagName('script'), src, token,
         a, b, c, d, e, i, j, k, l, t, u, v, w;
+
+    script = script[script.length - 1];
+    src = script.src;
+    src = src.slice(0, src.indexOf('/lot/')) + '/-poll/';
+
+    // just in case, prevent users playing around with the element inspector [^1]
+    token = script[get]('data-token');
+    script[reset]('data-token');
 
     function click() {
         t = this;
@@ -45,18 +53,14 @@
             v[set]('data-title', v[get]('title') || "");
             v[reset]('title');
         }
-        ajax(b[_].url, 'id=' + encode((b.id || ':').split(':')[1]) + '&token=' + encode(b[_].token) + '&key=' + encode(v[get]('data-key')) + '&value=' + encode(w) + '&title=' + encode(v[get]('title') || v[get]('data-title')));
+        ajax(src + b[token], 'id=' + encode((b.id || ':').split(':')[1]) + '&token=' + encode(token) + '&key=' + encode(v[get]('data-key')) + '&value=' + encode(w) + '&title=' + encode(v[get]('title') || v[get]('data-title')));
     }
 
     for (i = 0, j = poll[count]; i < j; ++i) {
         a = poll[i];
-        // just in case, prevent users playing around with the element inspector
-        a[_] = {
-            token: a[get]('data-token'),
-            url: a[get]('data-url')
-        };
-        a[reset]('data-token');
-        a[reset]('data-url');
+        // [^1]
+        a[token] = a[get]('data-path');
+        a[reset]('data-path');
         a = a[query]('.poll--a')[0][child];
         for (k = 0, l = a[count]; k < l; ++k) {
             b = a[k];

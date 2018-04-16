@@ -1,7 +1,11 @@
 <?php
 
 Asset::set(__DIR__ . DS . 'lot' . DS . 'asset' . DS . 'css' . DS . 'poll.min.css');
-Asset::set(__DIR__ . DS . 'lot' . DS . 'asset' . DS . 'js' . DS . 'poll.min.js');
+Asset::set(__DIR__ . DS . 'lot' . DS . 'asset' . DS . 'js' . DS . 'poll.min.js', null, [
+    'data[]' => [
+        'token' => Guardian::token('poll')
+    ]
+]);
 
 foreach (g(__DIR__ . DS . 'lot' . DS . 'worker', 'php') as $v) {
     Shield::set(Path::N($v), $v);

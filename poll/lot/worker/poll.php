@@ -2,7 +2,7 @@
 
 $id = isset($lot['id']) ? $lot['id'] : Path::N(__FILE__);
 
-$path = isset($lot['path']) ? $lot['path'] : 'page/' . $url->path;
+$path = isset($lot['path']) ? $lot['path'] : Path::F(PAGE, LOT, '/') . '/' . $url->path;
 $state = Extend::state('poll');
 
 $data = e(File::open(LOT . DS . $path . DS . 'poll.data')->read([]));
@@ -16,7 +16,7 @@ foreach ($a as $k => $v) {
 }
 
 ?>
-<div class="poll poll-<?php echo $id; ?> p" data-token="<?php echo $token; ?>" data-url="<?php echo $url . '/' . $state['path'] . '/' . $path; ?>" id="poll:<?php echo $id; ?>">
+<div class="poll poll-<?php echo $id; ?> p" data-path="<?php echo $path; ?>" id="poll:<?php echo $id; ?>">
   <?php if (isset($lot['q'])): ?>
   <h4 class="poll--q"><?php echo $lot['q']; ?></h4>
   <?php endif; ?>

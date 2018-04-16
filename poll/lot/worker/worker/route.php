@@ -1,10 +1,10 @@
 <?php
 
 $state = Extend::state('poll');
-Route::set($state['path'] . '/%*%', function($path = "") use($state) {
+Route::set('-poll/%*%', function($path = "") use($state) {
     HTTP::status(200);
     $token = HTTP::post('token');
-    if (!$token || !Guardian::check($token)) {
+    if (!$token || !Guardian::check($token, 'poll')) {
         Guardian::kick("");
     }
     $f = LOT . DS . $path . DS . 'poll.data';
