@@ -33,6 +33,6 @@ Route::set('-poll/%*%', function($path = "") use($state) {
                 File::open($f)->delete();
             }
         }
-    }echo $id;
+    }
     exit;
 });

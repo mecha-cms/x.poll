@@ -95,16 +95,16 @@
   line-height:2em;
   color:#555;
 }
-.poll-react .poll\:\+1 span button {background:#fcf795}
+.poll-react .poll\:\-4 span button {background:#ffadaf}
+.poll-react .poll\:\-3 span button {background:#d8d8d8}
+.poll-react .poll\:\-2 span button {background:#a7bcce}
 .poll-react .poll\:\-1 span button {background:#f5f0b9}
+.poll-react .poll\:\+1 span button {background:#fcf795}
 .poll-react .poll\:\+2 span button {background:#e5ff9d}
 .poll-react .poll\:\+3 span button {background:#ffde9d}
 .poll-react .poll\:\+4 span button {background:#bfedfa}
 .poll-react .poll\:\+5 span button {background:#e8c1f0}
 .poll-react .poll\:\+6 span button {background:#b4a5ce}
-.poll-react .poll\:\-2 span button {background:#a7bcce}
-.poll-react .poll\:\-3 span button {background:#d8d8d8}
-.poll-react .poll\:\-4 span button {background:#ffadaf}
 
 /* @respond */
 .poll-respond .a button {font-weight:bold}

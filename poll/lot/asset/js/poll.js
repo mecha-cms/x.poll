@@ -61,7 +61,9 @@
         // [^1]
         a[token] = a[get]('data-path');
         a[reset]('data-path');
-        a = a[query]('.poll--a')[0][child];
+        a = a[query]('.poll--a')[0];
+        if (/\bfreeze\b/.test(a[cla])) continue;
+        a = a[child];
         for (k = 0, l = a[count]; k < l; ++k) {
             b = a[k];
             if (/\bfreeze\b/.test(b[cla])) continue;

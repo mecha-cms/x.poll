@@ -9,10 +9,19 @@ $data = e(File::open(LOT . DS . $path . DS . 'poll.data')->read([]));
 
 $a = isset($lot['a']) ? $lot['a'] : [];
 $speak = a($language->poll);
+$version = Extend::state('poll', 'svg', '1.1');
+$icons = [];
 foreach ($a as $k => $v) {
+    if (isset($v['i'])) {
+       $icons[$k] = $v['i'];
+    }
     if (!isset($data->{$k})) {
         Cookie::reset('poll.' . dechex(crc32($k . ':' . $path)));
     }
+}
+
+if (!Config::get($x = 'poll.' . $id . '.i')) {
+    Config::set($x, $icons);
 }
 
 ?>
@@ -23,10 +32,10 @@ foreach ($a as $k => $v) {
   <?php if (isset($lot['h'])): ?>
   <div class="poll--h"><?php echo '<p>' . str_replace(["\n\n", "\n"], ['</p><p>', '<br>'], n(To::text($lot['h'], HTML_WISE_I, true))) . '</p>'; ?></div>
   <?php endif; ?>
-  <p class="poll--a"><!--
-    <?php foreach ($a as $k => $v): ?>
-    <?php $done = Cookie::get('poll.' . dechex(crc32($k . ':' . $path))); ?>
-    --><span class="poll:<?php echo $k . ($done ? ' freeze' : ""); ?>" data-key="<?php echo $k; ?>"<?php echo (isset($v['title']) ? ' title="' . $v['title'] . '"' : (isset($speak[$id][$k]) ? ' title="' . $speak[$id][$k] . '"' : "")); ?>><span><button><?php echo isset($v['i']) ? $v['i'] : $k; ?></button><i><?php echo isset($data->{$k}) ? $data->{$k} : 0; ?></i></span></span><!--
-    <?php endforeach; ?>
-  --></p>
+  <?php $done_any = $s = ""; foreach ($a as $k => $v): ?>
+  <?php $done = Cookie::get('poll.' . dechex(crc32($k . ':' . $path))); ?>
+  <?php if ($done) $done_any = true; ?>
+  <?php $s .= '<span class="poll:' . $k . ($done ? ' freeze' : "") . '" data-key="' . $k . '"' . (isset($v['title']) ? ' title="' . $v['title'] . '"' : (isset($speak[$id][$k]) ? ' title="' . $speak[$id][$k] . '"' : "")) . '><span><button>' . (isset($v['i']) ? '<svg version="' . $version . '"><use xlink:href="#' . fn_poll_id($id, $k) . '"></use></svg>' : $k) . '</button><i>' . (isset($data->{$k}) ? $data->{$k} : 0) . '</i></span></span>'; ?>
+  <?php endforeach; ?>
+  <p class="poll--a<?php echo $done_any ? ' freeze' : ""; ?>"><?php echo $s; ?></p>
 </div>
