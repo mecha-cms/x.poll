@@ -16,7 +16,7 @@ function fn_poll_yield($content) {
         return $content;
     }
     $s = "";
-    foreach ($defer as $k => $v) {
+    foreach ((array) $defer as $k => $v) {
         $ss = $id = "";
         if (isset($v->i)) {
             foreach ($v->i as $kk => $vv) {
@@ -25,13 +25,27 @@ function fn_poll_yield($content) {
                     $vv = (array) $vv;
                     $ss .= '<symbol id="' . $id . '" viewBox="' . $vv[0] . '">' . (strpos($vv[1], '<') === 0 ? $vv[1] : '<path d="' . $vv[1] . '"></path>') . '</symbol>';
                 } else {
-                    $ss .= str_replace(['<svg ', '</svg>'], ['<symbol id="' . $id . '" ', '</symbol>'], $vv);
+                    $ss .= str_replace([
+                        '<svg>',
+                        '<svg ',
+                        '</svg>'
+                    ], [
+                        '<symbol id="' . $id . '">',
+                        '<symbol id="' . $id . '" ',
+                        '</symbol>'
+                    ], $vv);
                 }
             }
             $s .= $ss;
         }
     }
-    return str_replace('</body>', '<svg version="' . Extend::state('poll', 'svg', '1.1') . '" id="svg:poll" xmlns="http://www.w3.org/2000/svg" display="none">' . $s . '</svg></body>', $content);
+    $s = '<svg version="' . Extend::state('poll', 'svg', '1.1') . '" id="svg:poll" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" display="none">' . $s . '</svg>';
+    if (strpos($content, '<body>') === false) {
+        return preg_replace_callback('#<body\s+[^<>]*?>#', function($m) use($s) {
+            return $m[0] . $s;
+        }, $content);
+    }
+    return str_replace('<body>', '<body>' . $s, $content);
 }
 
 Hook::set('shield.yield', 'fn_poll_yield');
