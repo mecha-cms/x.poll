@@ -9,7 +9,6 @@ $data = e(File::open(LOT . DS . $path . DS . 'poll.data')->read([]));
 
 $a = isset($lot['a']) ? $lot['a'] : [];
 $speak = a($language->poll);
-$version = Extend::state('poll', 'svg', '1.1');
 $icons = [];
 foreach ($a as $k => $v) {
     if (isset($v['i'])) {
@@ -24,8 +23,10 @@ if (!Config::get($x = 'poll.' . $id . '.i')) {
     Config::set($x, $icons);
 }
 
+$ii = Config::set('poll_id', Config::get('poll_id', 0) + 1)->get('poll_id');
+
 ?>
-<div class="poll poll-<?php echo $id; ?> p" data-path="<?php echo $path; ?>" id="poll:<?php echo $id; ?>">
+<div class="poll poll-<?php echo $id; ?> p" data-path="<?php echo $path; ?>" id="poll:<?php echo $id . ('-' . $ii); ?>">
   <?php if (isset($lot['q'])): ?>
   <h4 class="poll--q"><?php echo $lot['q']; ?></h4>
   <?php endif; ?>
@@ -35,7 +36,7 @@ if (!Config::get($x = 'poll.' . $id . '.i')) {
   <?php $done_any = $s = ""; foreach ($a as $k => $v): ?>
   <?php $done = Cookie::get('poll.' . dechex(crc32($k . ':' . $path))); ?>
   <?php if ($done) $done_any = true; ?>
-  <?php $s .= '<span class="poll:' . $k . ($done ? ' freeze' : "") . '" data-key="' . $k . '"' . (isset($v['title']) ? ' title="' . $v['title'] . '"' : (isset($speak[$id][$k]) ? ' title="' . $speak[$id][$k] . '"' : "")) . '><span><button>' . (isset($v['i']) ? '<svg version="' . $version . '"><use xlink:href="#' . fn_poll_id($id, $k) . '"></use></svg>' : $k) . '</button><i>' . (isset($data->{$k}) ? $data->{$k} : 0) . '</i></span></span>'; ?>
+  <?php $s .= '<span class="poll:' . $k . ($done ? ' freeze' : "") . '" data-key="' . $k . '"' . (isset($v['title']) ? ' title="' . $v['title'] . '"' : (isset($speak[$id][$k]) ? ' title="' . $speak[$id][$k] . '"' : "")) . '><span><button>' . (isset($v['i']) ? '<svg><use href="#' . fn_poll_id($id, $k) . '"></use></svg>' : $k) . '</button><i>' . (isset($data->{$k}) ? $data->{$k} : 0) . '</i></span></span>'; ?>
   <?php endforeach; ?>
   <p class="poll--a<?php echo $done_any ? ' freeze' : ""; ?>"><?php echo $s; ?></p>
 </div>

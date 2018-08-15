@@ -39,7 +39,7 @@ function fn_poll_yield($content) {
             $s .= $ss;
         }
     }
-    $s = '<svg version="' . Extend::state('poll', 'svg', '1.1') . '" id="svg:poll" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" display="none">' . $s . '</svg>';
+    $s = N . DENT . DENT . '<svg id="svg:poll" xmlns="http://www.w3.org/2000/svg" display="none">' . $s . '</svg>';
     if (strpos($content, '<body>') === false) {
         return preg_replace_callback('#<body\s+[^<>]*?>#', function($m) use($s) {
             return $m[0] . $s;
