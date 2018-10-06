@@ -1,10 +1,6 @@
 ---
 title: Poll
-description: >
-  Poll is a unified extension used to handle all tasks related to documenting the user’s input.
-  Surely you’ve seen features such as _like_ and _reaction_ buttons on Facebook and on most portal
-  websites, _plus one_ on Google+, _feedback_ on documentation/support websites. This extension
-  brings them all together into a simpler yet more extensible system in a single folder.
+description: Poll is a unified extension used to handle all tasks related to documenting user’s input.
 author: Taufik Nurrohman
 type: Markdown
 version: 1.2.0
@@ -14,6 +10,8 @@ dependency:
     - asset
     - page
 ...
+
+Surely you’ve seen features such as _like_ and _reaction_ buttons on Facebook and on most portal websites, _plus one_ on Google+, _feedback_ on documentation/support websites. This extension brings them all together into a simpler yet more extensible system in a single folder.
 
 ### Usage
 
@@ -68,7 +66,7 @@ Shield::get('poll/respond', [
         'yes' => 'Yes it is.',
         'no' => 'No. I don’t think so.'
     ],
-    'path' => 'my-poll' // path relative to `LOT` folder to store the polling data
+    'path' => 'my-poll' // path relative to `LOT` folder to store the poll data
 ]);
 ~~~
 
