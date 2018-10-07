@@ -36,7 +36,7 @@ $ii = Config::set('poll_id', Config::get('poll_id', 0) + 1)->get('poll_id');
   <?php $done_any = $s = ""; foreach ($a as $k => $v): ?>
   <?php $done = Cookie::get('poll.' . dechex(crc32($k . ':' . $path))); ?>
   <?php if ($done) $done_any = true; ?>
-  <?php $s .= '<span class="poll:' . $k . ($done ? ' freeze' : "") . '" data-key="' . $k . '"' . (isset($v['title']) ? ' title="' . $v['title'] . '"' : (isset($speak[$id][$k]) ? ' title="' . $speak[$id][$k] . '"' : "")) . '><span><button>' . (isset($v['i']) ? '<svg><use href="#' . fn_poll_id($id, $k) . '"></use></svg>' : $k) . '</button><i>' . (isset($data->{$k}) ? $data->{$k} : 0) . '</i></span></span>'; ?>
+  <?php $s .= '<span class="poll:' . $k . ($done ? ' freeze' : "") . '" data-key="' . $k . '"' . (isset($v['title']) ? ' title="' . $v['title'] . '"' : (isset($speak[$id][$k]) ? ' title="' . $speak[$id][$k] . '"' : "")) . '><span><button>' . (isset($v['i']) ? '<svg><use href="#' . fn\poll\id($id, $k) . '"></use></svg>' : $k) . '</button><i>' . (isset($data->{$k}) ? $data->{$k} : 0) . '</i></span></span>'; ?>
   <?php endforeach; ?>
   <p class="poll--a<?php echo $done_any ? ' freeze' : ""; ?>"><?php echo $s; ?></p>
 </div>

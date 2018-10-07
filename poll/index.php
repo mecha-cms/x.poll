@@ -1,17 +1,17 @@
-<?php
+<?php namespace fn\poll;
 
-Asset::set(__DIR__ . DS . 'lot' . DS . 'asset' . DS . 'css' . DS . 'poll.min.css');
-Asset::set(__DIR__ . DS . 'lot' . DS . 'asset' . DS . 'js' . DS . 'poll.min.js', null, [
+\Asset::set(__DIR__ . DS . 'lot' . DS . 'asset' . DS . 'css' . DS . 'poll.min.css');
+\Asset::set(__DIR__ . DS . 'lot' . DS . 'asset' . DS . 'js' . DS . 'poll.min.js', null, [
     'data[]' => [
-        'token' => Guardian::token('poll')
+        'token' => \Guardian::token('poll')
     ]
 ]);
 
-function fn_poll_id($id, $key) {
+function id($id, $key) {
     return 'i:' . dechex(crc32($id . ':' . $key));
 }
 
-function fn_poll_yield($content) {
+function svg($content) {
     if (!$defer = Config::get('poll')) {
         return $content;
     }
@@ -20,7 +20,7 @@ function fn_poll_yield($content) {
         $ss = $id = "";
         if (isset($v->i)) {
             foreach ($v->i as $kk => $vv) {
-                $id = fn_poll_id($k, $kk);
+                $id = id($k, $kk);
                 if (is_array($vv) || is_object($vv)) {
                     $vv = (array) $vv;
                     $ss .= '<symbol id="' . $id . '" viewBox="' . $vv[0] . '">' . (strpos($vv[1], '<') === 0 ? $vv[1] : '<path d="' . $vv[1] . '"></path>') . '</symbol>';
@@ -48,14 +48,14 @@ function fn_poll_yield($content) {
     return str_replace('<body>', '<body>' . $s, $content);
 }
 
-Hook::set('shield.yield', 'fn_poll_yield');
+\Hook::set('shield.yield', __NAMESPACE__ . '\svg');
 
-foreach (g(__DIR__ . DS . 'lot' . DS . 'worker', 'php') as $v) {
-    Shield::set(Path::N($v), $v);
+foreach (\g(__DIR__ . DS . 'lot' . DS . 'worker', 'php') as $v) {
+    \Shield::set(\Path::N($v), $v);
 }
 
-foreach (g(__DIR__ . DS . 'lot' . DS . 'worker' . DS . 'poll', 'php') as $v) {
-    Shield::set('poll/' . Path::N($v), $v);
+foreach (\g(__DIR__ . DS . 'lot' . DS . 'worker' . DS . 'poll', 'php') as $v) {
+    \Shield::set('poll/' . \Path::N($v), $v);
 }
 
 require __DIR__ . DS . 'lot' . DS . 'worker' . DS . 'worker' . DS . 'route.php';
