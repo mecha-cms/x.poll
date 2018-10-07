@@ -12,7 +12,7 @@ function id($id, $key) {
 }
 
 function svg($content) {
-    if (!$defer = Config::get('poll')) {
+    if (!$defer = \Config::get('poll')) {
         return $content;
     }
     $s = "";
