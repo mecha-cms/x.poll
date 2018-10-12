@@ -9,7 +9,7 @@ if (!empty($lot['a'])) {
     unset($lot['a']);
 }
 
-Shield::get(__DIR__ . DS . '..' . DS . 'poll.php', array_replace([
+Shield::get(__DIR__ . DS . '..' . DS . 'poll.php', extend([
     'id' => Path::N(__FILE__),
     'a' => $responses
 ], !empty($lot) ? $lot : []));

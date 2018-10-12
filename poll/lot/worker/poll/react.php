@@ -2,7 +2,7 @@
 
 // icons: <http://fontello.com>
 
-Shield::get(__DIR__ . DS . '..' . DS . 'poll.php', array_replace([
+Shield::get(__DIR__ . DS . '..' . DS . 'poll.php', extend([
     'id' => Path::N(__FILE__),
     'a' => [
         '+1' => [
