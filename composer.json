@@ -1,0 +1,8 @@
+{
+  "description": "Poll is a unified extension used to handle all tasks related to documenting user’s input.",
+  "license": "GPL-3.0-or-later",
+  "name": "mecha-cms/x.poll",
+  "require": {
+    "mecha-cms/x.layout": "^2.0.0"
+  }
+}
